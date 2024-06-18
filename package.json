@@ -22,7 +22,6 @@
     "e2e:android": "turbo run detox-android-test --filter '@monorepo/e2e'",
     "tsc": "turbo run tsc",
     "docs": "yarn --cwd website start",
-    "postinstall": "husky install",
     "clean": "turbo run clean && rm -Rf node_modules"
   },
   "devDependencies": {

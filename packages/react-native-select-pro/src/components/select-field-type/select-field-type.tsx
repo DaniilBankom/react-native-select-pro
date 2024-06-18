@@ -9,31 +9,31 @@ import { SelectText } from '../select-text';
 import { useSelectFieldType } from './select-field-type.hooks';
 
 export const SelectFieldType = () => {
-    const { multiple, selectedOptions, selectedOptionLabel, isSearchable } = useSelectFieldType();
+  const { multiple, selectedOptions, selectedOptionLabel, isSearchable } = useSelectFieldType();
 
-    const renderSelectFieldType = () => {
-        if (multiple) {
-            return <MultiSelect selectedOptions={selectedOptions} />;
-        }
+  const renderSelectFieldType = () => {
+    if (multiple) {
+      return <MultiSelect selectedOptions={selectedOptions} />;
+    }
 
-        if (isSearchable) {
-            return <SelectInput />;
-        }
+    if (isSearchable) {
+      return <SelectInput />;
+    }
 
-        return <SelectText selectedOptionLabel={selectedOptionLabel} />;
-    };
+    return <SelectText selectedOptionLabel={selectedOptionLabel} />;
+  };
 
-    return <View style={styles.container}>{renderSelectFieldType()}</View>;
+  return <View style={styles.container}>{renderSelectFieldType()}</View>;
 };
 
 type Styles = {
-    container: ViewStyle;
+  container: ViewStyle;
 };
 
 const styles = StyleSheet.create<Styles>({
-    container: {
-        flex: 1,
-        height: '100%',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    height: '100%',
+    justifyContent: 'center',
+  },
 });

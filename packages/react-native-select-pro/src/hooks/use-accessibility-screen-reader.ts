@@ -5,29 +5,29 @@ import { AccessibilityInfo } from 'react-native';
 import { ERRORS, isAndroid, logError } from '../helpers';
 
 export const useAccessibilityScreenReader = () => {
-    const [isScreenReaderEnabled, setIsScreenReaderEnabled] = useState(false);
+  const [isScreenReaderEnabled, setIsScreenReaderEnabled] = useState(false);
 
-    useEffect(() => {
-        if (isAndroid) {
-            return;
-        }
+  useEffect(() => {
+    if (isAndroid) {
+      return;
+    }
 
-        let subscription: EmitterSubscription | null = null;
-        void (async () => {
-            try {
-                await AccessibilityInfo.isScreenReaderEnabled();
-            } catch {
-                logError(ERRORS.SCREEN_READER_ERROR);
-            }
-            subscription = AccessibilityInfo.addEventListener('change', (e) => {
-                setIsScreenReaderEnabled(e);
-            });
-        })();
+    let subscription: EmitterSubscription | null = null;
+    void (async () => {
+      try {
+        await AccessibilityInfo.isScreenReaderEnabled();
+      } catch {
+        logError(ERRORS.SCREEN_READER_ERROR);
+      }
+      subscription = AccessibilityInfo.addEventListener('change', (e) => {
+        setIsScreenReaderEnabled(e);
+      });
+    })();
 
-        return () => {
-            subscription?.remove();
-        };
-    }, []);
+    return () => {
+      subscription?.remove();
+    };
+  }, []);
 
-    return isScreenReaderEnabled;
+  return isScreenReaderEnabled;
 };

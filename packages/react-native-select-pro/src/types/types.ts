@@ -42,6 +42,11 @@ export type OptionsType<T> = SectionOptionType<T>[] | OptionType<T>[];
  */
 export interface SelectProps<T = unknown> {
   /**
+   * An init value for the text search input
+   */
+  initSearchValue?: string;
+
+  /**
    *  An array of objects that represents the available options for a `Select`.
    */
   options: OptionsType<T>;

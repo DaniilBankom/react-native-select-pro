@@ -9,7 +9,7 @@ export const Searchable = () => {
   return (
     <SafeAreaViewWrapper>
       <Text>Search sth...</Text>
-      <Select options={DATA} searchable={true} />
+      <Select options={DATA} searchable={true} initSearchValue={"First"} />
     </SafeAreaViewWrapper>
   );
 };

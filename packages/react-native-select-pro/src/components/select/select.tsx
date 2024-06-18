@@ -1,4 +1,4 @@
-import type { Dispatch, ForwardedRef, Reducer } from 'react';
+import { Dispatch, ForwardedRef, Reducer, useState } from 'react';
 import React, { forwardRef, useReducer, useRef } from 'react';
 import type { SectionListData, ViewStyle } from 'react-native';
 import { StyleSheet, UIManager, View } from 'react-native';
@@ -48,6 +48,7 @@ const SelectComponent = <T,>(props: SelectProps<T>, ref: ForwardedRef<SelectRef<
     scrollToSelectedOption = true,
     searchable = false,
     searchPattern = (payload: string) => `(${payload})`,
+    initSearchValue = "",
     styles: customStyles,
     theme = 'none',
     // Callbacks
@@ -143,6 +144,7 @@ const SelectComponent = <T,>(props: SelectProps<T>, ref: ForwardedRef<SelectRef<
           placeholderTextColor,
           searchPattern,
           searchValue,
+          initSearchValue,
           onPressSelectControl,
           selectInputProps,
           onRemove: onRemove as
@@ -191,6 +193,7 @@ const SelectComponent = <T,>(props: SelectProps<T>, ref: ForwardedRef<SelectRef<
                 optionsData: optionsData as OptionsType<unknown>,
                 scrollToSelectedOption,
                 searchValue,
+                initSearchValue,
                 onPressOption: onPressOption as OnPressOptionType<unknown>,
                 onPressSection,
                 selectedOption,

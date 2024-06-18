@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { TextStyle } from 'react-native';
 import { I18nManager, StyleSheet, TextInput } from 'react-native';
 
@@ -11,6 +11,7 @@ export const SelectInput = () => {
     disabled,
     multiple,
     placeholderTextColor,
+    initSearchValue,
     searchValue,
     onPressSelectControl,
     selectInputProps,
@@ -19,6 +20,8 @@ export const SelectInput = () => {
     resolvedPlaceholder,
     onChangeText,
   } = useSelectInput();
+
+  const [searchTextChanged, setSearchTextChanged] = useState(false)
 
   return (
     <TextInput
@@ -34,8 +37,8 @@ export const SelectInput = () => {
           : [styles.text, textCustomStyles]
       }
       textAlign={I18nManager.getConstants().isRTL ? 'right' : 'left'}
-      value={searchValue ?? ''}
-      onChangeText={onChangeText}
+      value={searchTextChanged ? (searchValue ?? '') : initSearchValue}
+      onChangeText={(props: any) => { setSearchTextChanged(true); onChangeText(props) }}
       onPressIn={disabled ? undefined : onPressSelectControl}
     />
   );

@@ -17,7 +17,7 @@ export const Backdrop = <T,>({
       {...backdropProps}
       onPress={onOutsidePress}
     >
-      <View {...backdropChildProps} style={[styles.modalOverlay, backdropCustomStyles]} />
+      <View pointerEvents="none" {...backdropChildProps} style={[styles.modalOverlay, backdropCustomStyles]} />
     </TouchableWithoutFeedback>
   );
 };

@@ -390,5 +390,6 @@ export interface SelectRef<T = unknown> {
 
   fullClear: () => void;
 
+
   fillSearch: (text: string) => void;
 }

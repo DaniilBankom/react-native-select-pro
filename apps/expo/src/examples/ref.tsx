@@ -19,6 +19,7 @@ export const Ref = () => {
 
   const onClear = () => {
     if (ref.current) {
+      console.log("HERE 0")
       ref.current.clear();
     }
   };
@@ -26,6 +27,13 @@ export const Ref = () => {
   const onGetState = () => {
     if (ref.current) {
       setCurrentState(ref.current.getState());
+    }
+  };
+
+  const onFullClear = () => {
+    if (ref.current) {
+      console.log("HERE 000")
+      ref.current.fullClear()
     }
   };
 
@@ -40,8 +48,9 @@ export const Ref = () => {
       >
         <Button title="Open" onPress={onPress} />
         <Button title="Reset" onPress={onClear} />
+        <Button title="Full Clear" onPress={onFullClear} />
         <Button title="Get current Select state" onPress={onGetState} />
-        <Select ref={ref} options={DATA} />
+        <Select ref={ref} options={DATA} searchable={true} clearable={true} />
       </View>
 
       <ScrollView style={{ flex: 1 }}>

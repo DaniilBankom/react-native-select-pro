@@ -45,12 +45,18 @@ export const useSelect = <T>({
   const open = useCallback(() => {
     dispatch({ type: 'open' });
     onSelectOpened?.();
-  }, [dispatch, onSelectOpened]);
+  }, []);
 
   const close = useCallback(() => {
     dispatch({ type: 'close' });
     onSelectClosed?.();
-  }, [dispatch, onSelectClosed]);
+    console.log("CLOSED!!!")
+  }, []);
+
+  const fullClear = () => {
+    console.log("HERE 1")
+    dispatch({ type: 'fullClear' });
+  }
 
   const measureSelectInWindow = () => {
     return new Promise<LayoutRectangle>((resolve) => {
@@ -149,6 +155,9 @@ export const useSelect = <T>({
         }
       },
       close,
+      fullClear: () => {
+        fullClear()
+      },
       getState: () => state,
     }),
   );

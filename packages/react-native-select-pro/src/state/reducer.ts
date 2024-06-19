@@ -9,14 +9,33 @@ import type { ActionType, CreateInitialStateType, State } from './types';
 
 export const reducer = <T>(state: State<T>, action: ActionType<T>): State<T> => {
   switch (action.type) {
+    case 'fullClear':
+      state.animationDuration > 0 &&
+        LayoutAnimation.configureNext({
+          duration: state.animationDuration,
+        });
+
+      // close options
+      console.log("WTF !??")
+      return {
+        ...state,
+        isClosedForcefuly: true,
+        //clear input
+        searchValue: "",
+        //clear selected option
+        selectedOption: null,
+        selectedOptionIndex: -1,
+        isOpened: false,
+      };
     case 'open':
-      if (state.searchValue !== null) {
+      if (state.searchValue !== null && !state.isClosedForcefuly) {
         state.searchInputRef?.current?.focus();
       }
       return {
         ...state,
         isOpened: true,
       };
+
     case 'close':
       state.animationDuration > 0 &&
         LayoutAnimation.configureNext({
@@ -33,8 +52,10 @@ export const reducer = <T>(state: State<T>, action: ActionType<T>): State<T> => 
         selectedOptionIndex: action.payload.selectedOptionIndex,
       };
     case 'setSearchValue':
+      console.log("Set search value = ", action.payload)
       return {
         ...state,
+        isClosedForcefuly: false,
         searchValue: action.payload,
       };
     case 'searchOptions': {
@@ -119,6 +140,7 @@ export const createInitialState = <T>({
 
   return {
     isOpened: false,
+    isClosedForcefuly: false,
     selectedOption,
     selectedOptionIndex,
     searchedOptions: [],

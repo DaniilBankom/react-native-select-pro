@@ -387,4 +387,6 @@ export interface SelectRef<T = unknown> {
    * Get current state of select
    */
   getState: () => State<T>;
+
+  fullClear: () => void;
 }

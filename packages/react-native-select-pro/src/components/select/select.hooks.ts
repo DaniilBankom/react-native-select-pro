@@ -58,6 +58,10 @@ export const useSelect = <T>({
     dispatch({ type: 'fullClear' });
   }
 
+  const fillSearch = (value: string = "") => {
+    dispatch({ type: 'setSearchValue', payload: value });
+  }
+
   const measureSelectInWindow = () => {
     return new Promise<LayoutRectangle>((resolve) => {
       if (selectControlRef.current) {
@@ -158,6 +162,7 @@ export const useSelect = <T>({
       fullClear: () => {
         fullClear()
       },
+      fillSearch,
       getState: () => state,
     }),
   );

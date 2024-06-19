@@ -55,7 +55,6 @@ export const reducer = <T>(state: State<T>, action: ActionType<T>): State<T> => 
       console.log("Set search value = ", action.payload)
       return {
         ...state,
-        isClosedForcefuly: false,
         searchValue: action.payload,
       };
     case 'searchOptions': {

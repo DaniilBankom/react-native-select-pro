@@ -37,6 +37,14 @@ export const Ref = () => {
     }
   };
 
+
+  const onFillSearch = () => {
+    if (ref.current) {
+      console.log("HERE 111")
+      ref.current.fillSearch("asdf")
+    }
+  };
+
   return (
     <SafeAreaViewWrapper>
       <View
@@ -48,8 +56,9 @@ export const Ref = () => {
       >
         <Button title="Open" onPress={onPress} />
         <Button title="Reset" onPress={onClear} />
-        <Button title="Full Clear" onPress={onFullClear} />
         <Button title="Get current Select state" onPress={onGetState} />
+        <Button title="Full Clear" onPress={onFullClear} />
+        <Button title="Fill search" onPress={onFillSearch} />
         <Select ref={ref} options={DATA} searchable={true} clearable={true} />
       </View>
 

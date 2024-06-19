@@ -389,4 +389,6 @@ export interface SelectRef<T = unknown> {
   getState: () => State<T>;
 
   fullClear: () => void;
+
+  fillSearch: (text: string) => void;
 }

@@ -59,8 +59,10 @@ export const Ref = () => {
         <Button title="Get current Select state" onPress={onGetState} />
         <Button title="Full Clear" onPress={onFullClear} />
         <Button title="Fill search" onPress={onFillSearch} />
-        <Select ref={ref} options={DATA} searchable={true} clearable={true} />
+        <Select ref={ref} options={DATA} searchable={true} backdropChildProps={{ pointerEvents: "none" }} />
       </View>
+
+
 
       <ScrollView style={{ flex: 1 }}>
         <Text style={{ marginTop: 20 }}>
